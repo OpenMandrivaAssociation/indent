@@ -10,7 +10,6 @@ Patch:		indent-2.2.9.gcc-fix.patch
 Requires(post): info-install
 Requires(preun): info-install
 BuildRequires:	gettext
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
 Indent is a GNU program for beautifying C code, so that it is easier to read.
