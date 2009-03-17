@@ -1,12 +1,12 @@
 Summary:	A GNU program for formatting C code
 Name:		indent
-Version:	2.2.9
-Release:	%mkrel 9
+Version:	2.2.10
+Release:	%mkrel 1
 License:	GPL
 Group:		Development/C
 URL:		http://www.gnu.org/software/indent/indent.html
 Source:		ftp://ftp.gnu.org/pub/gnu/indent/%{name}-%{version}.tar.bz2
-Patch:		indent-2.2.9.gcc-fix.patch
+Patch:		indent-2.2.10.gcc-fix.patch
 Requires(post): info-install
 Requires(preun): info-install
 BuildRequires:	gettext
