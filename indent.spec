@@ -1,7 +1,7 @@
 Summary:	A GNU program for formatting C code
 Name:		indent
 Version:	2.2.10
-Release:	%mkrel 3
+Release:	%mkrel 4
 License:	GPL
 Group:		Development/C
 URL:		http://www.gnu.org/software/indent/indent.html
