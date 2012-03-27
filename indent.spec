@@ -1,16 +1,22 @@
-Summary:	A GNU program for formatting C code
 Name:		indent
-Version:	2.2.10
-Release:	%mkrel 5
-License:	GPL
+Version:	2.2.11
+Release:	%mkrel 1
+Summary:	A GNU program for formatting C code
+License:	GPLv3
 Group:		Development/C
-URL:		http://www.gnu.org/software/indent/indent.html
-Source:		ftp://ftp.gnu.org/pub/gnu/indent/%{name}-%{version}.tar.bz2
-Patch:		indent-2.2.10.gcc-fix.patch
-Requires(post): info-install
-Requires(preun): info-install
-BuildRequires:	gettext
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
+URL:		http://indent.isidore-it.eu/beautify.html
+Source:		http://indent.isidore-it.eu/%{name}-%{version}.tar.gz
+Patch1:		indent-2.2.10.gcc-fix.patch
+# https://lists.gnu.org/archive/html/bug-indent/2011-08/msg00000.html
+Patch2:		indent-2.2.11-Do-not-split-decimal-float-suffix-from-constant.patch
+# https://lists.gnu.org/archive/html/bug-indent/2012-02/msg00000.html
+Patch3:		indent-2.2.11-Return-non-zero-exit-code-on-tests-failure.patch
+BuildRequires:	texi2html
+
+%if %{mdvver} < 201200
+Requires(post):		info-install
+Requires(preun):	info-install
+%endif
 
 %description
 Indent is a GNU program for beautifying C code, so that it is easier to read.
@@ -23,45 +29,42 @@ like to format your code automatically.
 %prep
 
 %setup -q
-%patch -p0
+%patch1 -p0
+%patch2 -p1 -b .float-suffix
+%patch3 -p1 -b .exit-code
 
 %build
 %configure2_5x
 %make
 
 %install
-rm -rf %{buildroot}
-
+%__rm -rf %{buildroot}
 %makeinstall_std
 
 # html file handled in percent-doc
-rm -rf %{buildroot}%{_prefix}/doc
+%__rm -rf %{buildroot}%{_prefix}/doc
 
 # fix message catalog name
 [ -d %{buildroot}%{_datadir}/locale/zh_TW.Big5 ] && \
-  mv %{buildroot}%{_datadir}/locale/zh_TW{.Big5,}
+  %__mv %{buildroot}%{_datadir}/locale/zh_TW{.Big5,}
 
 %find_lang %{name}
 
 %clean
-rm -rf %{buildroot}
+%__rm -rf %{buildroot}
 
+%if %{mdvver} < 201200
 %post
 %_install_info %{name}.info
-#/sbin/install-info %{_infodir}/indent.info.bz2 %{_infodir}/dir --entry="* indent: (indent).				Program to format source code."
 
 %preun
 %_remove_install_info %{name}.info
-#if [ "$1" = 0 ]; then
-#	/sbin/install-info --delete %{_infodir}/indent.info.bz2 %{_infodir}/dir --entry="* indent: (indent).                 	 Program to format source code."
-#fi
+%endif
 
 %files -f %{name}.lang
-%defattr(-,root,root)
 %doc AUTHORS COPYING NEWS ChangeLog README doc/indent.html
 %{_bindir}/indent
 %{_bindir}/texinfo2man
 %{_mandir}/man?/*
 %{_infodir}/*.info*
-
 
