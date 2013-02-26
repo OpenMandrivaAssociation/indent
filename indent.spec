@@ -5,7 +5,7 @@ Release:	2
 License:	GPL
 Group:		Development/C
 URL:		http://www.gnu.org/software/indent/indent.html
-Source:		ftp://ftp.gnu.org/pub/gnu/indent/%{name}-%{version}.tar.bz2
+Source:		ftp://ftp.gnu.org/pub/gnu/indent/%{name}-%{version}.tar.gz
 Patch1: indent-2.2.10.gcc-fix.patch
 # https://lists.gnu.org/archive/html/bug-indent/2011-08/msg00000.html
 Patch2: indent-2.2.11-Do-not-split-decimal-float-suffix-from-constant.patch
