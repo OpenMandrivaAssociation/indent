@@ -1,13 +1,18 @@
 Summary:	A GNU program for formatting C code
 Name:		indent
-Version:	2.2.10
-Release:	7
+Version:	2.2.11
+Release:	2
 License:	GPL
 Group:		Development/C
 URL:		http://www.gnu.org/software/indent/indent.html
 Source:		ftp://ftp.gnu.org/pub/gnu/indent/%{name}-%{version}.tar.bz2
-Patch:		indent-2.2.10.gcc-fix.patch
-BuildRequires:	gettext
+Patch1: indent-2.2.10.gcc-fix.patch
+# https://lists.gnu.org/archive/html/bug-indent/2011-08/msg00000.html
+Patch2: indent-2.2.11-Do-not-split-decimal-float-suffix-from-constant.patch
+# https://lists.gnu.org/archive/html/bug-indent/2012-02/msg00000.html
+Patch3: indent-2.2.11-Return-non-zero-exit-code-on-tests-failure.patch
+BuildRequires: texi2html
+BuildRequires: gettext
 
 %description
 Indent is a GNU program for beautifying C code, so that it is easier to read.
@@ -20,7 +25,9 @@ like to format your code automatically.
 %prep
 
 %setup -q
-%patch -p0
+%patch1 -p0
+%patch2 -p1 -b .float-suffix
+%patch3 -p1 -b .exit-code
 
 %build
 %configure2_5x
