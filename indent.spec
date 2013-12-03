@@ -42,6 +42,7 @@ like to format your code automatically.
 
 
 %build
+libtoolize --copy --force
 autoreconf -fiv
 %configure2_5x
 %make
