@@ -1,3 +1,5 @@
+%bcond_with	crosscompile
+
 Summary:	A GNU program for formatting C code
 Name:		indent
 Version:	2.2.11
@@ -11,8 +13,15 @@ Patch1:		indent-2.2.10.gcc-fix.patch
 Patch2:		indent-2.2.11-Do-not-split-decimal-float-suffix-from-constant.patch
 # https://lists.gnu.org/archive/html/bug-indent/2012-02/msg00000.html
 Patch3:		indent-2.2.11-Return-non-zero-exit-code-on-tests-failure.patch
+# do not use built texinfo2man if crosscompile
+# use /usr/bin/texinfo2man
+Patch4:		crosscompile-native-binary.patch
+
 BuildRequires:	gettext
 BuildRequires:	texi2html
+%if %{with crosscompile}
+BuildRequires:	indent
+%endif
 
 %description
 Indent is a GNU program for beautifying C code, so that it is easier to read.
@@ -24,7 +33,13 @@ like to format your code automatically.
 
 %prep
 %setup -q
-%apply_patches
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%if %{with crosscompile}
+%patch4 -p1
+%endif
+
 
 %build
 autoreconf -fiv

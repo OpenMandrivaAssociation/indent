@@ -1,0 +1,11 @@
+diff --git a/man/Makefile.am b/man/Makefile.am
+index 0836187..06cee7d 100644
+--- a/man/Makefile.am
++++ b/man/Makefile.am
+@@ -11,5 +11,5 @@ EXTRA_DIST = $(man_MANS) @PACKAGE@.1.in
+ MAINTAINERCLEANFILES = @PACKAGE@.1 Makefile.in texinfo2man 
+ 
+ @PACKAGE@.1: ${srcdir}/@PACKAGE@.1.in  ${srcdir}/../doc/@PACKAGE@.texinfo texinfo2man  Makefile.am
+-	./texinfo2man ${srcdir}/@PACKAGE@.1.in ${srcdir}/../doc/@PACKAGE@.texinfo > $@
++	/usr/bin/texinfo2man ${srcdir}/@PACKAGE@.1.in ${srcdir}/../doc/@PACKAGE@.texinfo > $@
+ 
