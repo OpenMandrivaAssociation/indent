@@ -19,6 +19,7 @@ Patch4:		crosscompile-native-binary.patch
 
 BuildRequires:	gettext
 BuildRequires:	texi2html
+BuildRequires:	gettext-devel
 %if %{with crosscompile}
 BuildRequires:	indent
 %endif
