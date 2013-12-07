@@ -3,7 +3,7 @@
 Summary:	A GNU program for formatting C code
 Name:		indent
 Version:	2.2.11
-Release:	6
+Release:	7
 License:	GPLv2
 Group:		Development/C
 Url:		http://www.gnu.org/software/indent/indent.html
