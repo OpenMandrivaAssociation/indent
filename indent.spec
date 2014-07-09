@@ -45,7 +45,7 @@ like to format your code automatically.
 %build
 libtoolize --copy --force
 autoreconf -fiv
-%configure2_5x
+%configure
 %make
 
 %install
@@ -66,4 +66,3 @@ rm -rf %{buildroot}%{_prefix}/doc
 %{_bindir}/texinfo2man
 %{_mandir}/man?/*
 %{_infodir}/*.info*
-
