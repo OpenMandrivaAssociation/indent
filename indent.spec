@@ -3,7 +3,7 @@
 Summary:	A GNU program for formatting C code
 Name:		indent
 Version:	2.2.11
-Release:	9
+Release:	10
 License:	GPLv2
 Group:		Development/C
 Url:		http://www.gnu.org/software/indent/indent.html
@@ -43,6 +43,7 @@ like to format your code automatically.
 
 
 %build
+export CC=gcc
 libtoolize --copy --force
 autoreconf -fiv
 %configure
