@@ -49,6 +49,7 @@ BuildRequires:	gperf
 BuildRequires:	gettext
 BuildRequires:	texi2html
 BuildRequires:	gettext-devel
+BuildRequires:	texinfo
 %if %{with crosscompile}
 BuildRequires:	indent
 %endif
