@@ -6,7 +6,7 @@ Version:	2.2.13
 Release:	3
 License:	GPLv2
 Group:		Development/C
-Url:		http://www.gnu.org/software/indent/indent.html
+Url:		https://www.gnu.org/software/indent/indent.html
 Source0:	ftp://ftp.gnu.org/pub/gnu/indent/%{name}-%{version}.tar.gz
 # gperf to update pre-generated code to fix compiler warnings
 BuildRequires:	gperf
