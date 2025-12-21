@@ -9,6 +9,7 @@ Group:		Development/C
 Url:		https://www.gnu.org/software/indent/indent.html
 Source0:	ftp://ftp.gnu.org/pub/gnu/indent/%{name}-%{version}.tar.gz
 # gperf to update pre-generated code to fix compiler warnings
+BuildRequires:	make
 BuildRequires:	gperf
 BuildRequires:	gettext
 BuildRequires:	texi2html
